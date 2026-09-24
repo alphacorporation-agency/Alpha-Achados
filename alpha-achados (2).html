@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpha Achados — as melhores ofertas, achadas pra você</title>
+<meta name="description" content="Curadoria de ofertas e cursos com link direto para a compra.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#241E1A; --ink-soft:#5c534c; --paper:#FFF9F4; --card:#FFFFFF;
+  --tangerine:#FF7A3D; --tangerine-deep:#E85F22; --teal:#0F8B8D; --rule:rgba(36,30,26,0.12);
+}
+*{box-sizing:border-box;}
+html{ scroll-behavior:smooth; }
+body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Inter', sans-serif; line-height:1.55; }
+.wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+
+header{ border-bottom:1px solid var(--rule); background:var(--paper); }
+.header-inner{ max-width:960px; margin:0 auto; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; gap:12px 24px; flex-wrap:wrap; }
+.logo{ font-family:'Sora', sans-serif; font-weight:800; font-size:1.4rem; color:var(--ink); text-decoration:none; }
+.logo span{ color:var(--tangerine-deep); }
+.nav{ display:flex; flex-wrap:wrap; gap:6px 20px; }
+.nav a{ color:var(--ink-soft); text-decoration:none; font-size:0.9rem; font-weight:500; padding:4px 0; border-bottom:2px solid transparent; }
+.nav a:hover{ color:var(--tangerine-deep); }
+.nav a[aria-current="page"]{ color:var(--ink); border-bottom-color:var(--tangerine); }
+a:focus-visible, .subscribe input:focus-visible, .subscribe button:focus-visible{ outline:3px solid var(--teal); outline-offset:2px; }
+
+.hero{ padding:48px 0 24px; text-align:center; }
+.hero h1{ font-family:'Sora', sans-serif; font-weight:800; font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.12; margin:0 0 14px; }
+.hero p{ color:var(--ink-soft); font-size:1.05rem; max-width:52ch; margin:0 auto; }
+
+.section-head{ padding-top:32px; }
+.section-head h2{ font-family:'Sora', sans-serif; font-size:1.4rem; margin:0; }
+
+.tiles{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:20px; padding:20px 0 56px; }
+.tile{ background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:22px; display:flex; flex-direction:column; gap:8px; text-decoration:none; color:var(--ink); }
+.tile:hover{ border-color:var(--tangerine); }
+.tile-name{ font-family:'Sora', sans-serif; font-weight:700; font-size:1.15rem; }
+.tile-desc{ color:var(--ink-soft); font-size:0.92rem; }
+.tile-count{ margin-top:auto; padding-top:6px; font-size:0.8rem; font-weight:600; color:var(--teal); }
+
+.grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:20px; padding:20px 0 40px; }
+.card{ background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:18px; display:flex; flex-direction:column; gap:10px; }
+.thumb{ position:relative; aspect-ratio:4/3; border-radius:8px; overflow:hidden; background:linear-gradient(135deg, var(--tangerine) 0%, var(--teal) 100%); }
+.thumb img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.thumb .tag{ position:absolute; left:10px; bottom:10px; background:rgba(255,255,255,0.92); color:var(--ink); font-size:0.72rem; font-weight:600; padding:3px 9px; border-radius:20px; }
+.card h3{ font-family:'Sora', sans-serif; font-size:1.02rem; line-height:1.3; margin:0; }
+.card a.cta{ margin-top:auto; text-align:center; background:var(--tangerine); color:#fff; font-weight:600; font-size:0.9rem; padding:10px; border-radius:8px; text-decoration:none; }
+.card a.cta:hover{ background:var(--tangerine-deep); }
+.affiliate-note{ font-size:0.7rem; color:var(--ink-soft); }
+
+.subscribe{ background:var(--ink); color:#fff; padding:44px 0; text-align:center; }
+.subscribe h2{ font-family:'Sora', sans-serif; margin:0 0 8px; }
+.subscribe p{ color:#cabbb0; margin:0 0 20px; }
+.subscribe form{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+.subscribe input{ padding:11px 14px; border-radius:8px; border:none; min-width:220px; font-family:'Inter',sans-serif; }
+.subscribe button{ background:var(--tangerine); color:#fff; border:none; padding:11px 20px; border-radius:8px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif; }
+.subscribe button:hover{ background:var(--tangerine-deep); }
+
+footer{ padding:24px 0; text-align:center; color:var(--ink-soft); font-size:0.8rem; }
+
+
+@media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } }
+
+button{ font:inherit; }
+.logo{ background:none; border:none; padding:0; cursor:pointer; }
+.nav{ gap:24px; }
+.nav-link{ background:none; border:none; padding:4px 0; cursor:pointer; color:var(--ink-soft); font-family:'Inter',sans-serif; font-size:0.9rem; font-weight:500; border-bottom:2px solid transparent; }
+.nav-link:hover{ color:var(--tangerine-deep); border-bottom-color:var(--tangerine); }
+
+.hero{ text-align:left; padding:56px 0 48px; border-bottom:1px solid var(--rule); }
+.hero-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:end; }
+.hero h1{ margin:0 0 16px; }
+.hero p.lede{ color:var(--ink-soft); font-size:1.05rem; max-width:46ch; margin:0; }
+.today-card{ background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:16px; display:flex; flex-direction:column; gap:10px; }
+.today-label{ margin:0; font-size:0.78rem; font-weight:600; color:var(--teal); }
+.today-card .thumb{ aspect-ratio:16/9; }
+.today-card h3{ font-family:'Sora',sans-serif; font-size:1.05rem; line-height:1.3; margin:0; }
+.today-card a.cta{ text-align:center; background:var(--tangerine); color:#fff; font-weight:600; font-size:0.9rem; padding:10px; border-radius:8px; text-decoration:none; }
+.today-card a.cta:hover{ background:var(--tangerine-deep); }
+
+.categories{ padding:18px 0; border-bottom:1px solid var(--rule); }
+.categories .wrap{ display:flex; gap:10px 22px; flex-wrap:wrap; }
+.cat-pill{ background:none; border:none; padding:2px 0; cursor:pointer; color:var(--ink-soft); font-family:'Inter',sans-serif; font-size:0.92rem; border-bottom:2px solid transparent; }
+.cat-pill:hover{ color:var(--tangerine-deep); }
+.cat-pill.active{ color:var(--ink); font-weight:600; border-bottom-color:var(--tangerine); }
+
+.catalog{ padding-top:36px; }
+.catalog h2{ font-family:'Sora',sans-serif; font-size:1.5rem; margin:0 0 6px; }
+.catalog .sub{ color:var(--ink-soft); font-size:0.95rem; margin:0; }
+.catalog .grid{ padding-top:24px; }
+.card.hidden-by-filter{ display:none; }
+
+.subscribe-inner{ display:flex; justify-content:space-between; align-items:center; gap:28px; flex-wrap:wrap; text-align:left; }
+.subscribe-inner h2{ margin:0 0 6px; font-size:1.5rem; }
+.subscribe-inner p{ margin:0; }
+.subscribe form{ flex-wrap:nowrap; }
+#subscribe-msg{ display:none; margin:12px 0 0; font-size:0.88rem; color:#ffd7bf; }
+footer{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px 24px; text-align:left; }
+
+@media (max-width:720px){
+  .hero-grid{ grid-template-columns:1fr; gap:32px; }
+  .subscribe-inner{ flex-direction:column; align-items:flex-start; }
+  .subscribe form{ width:100%; }
+  .subscribe input{ flex:1; min-width:0; }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <button class="logo" type="button" id="logo-btn">Alpha <span>Achados</span></button>
+    <nav class="nav" aria-label="Principal">
+      <button type="button" class="nav-link" data-target="achados">Achados</button>
+      <button type="button" class="nav-link" data-target="categorias">Categorias</button>
+      <button type="button" class="nav-link" data-target="assinar">Assinar</button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>As melhores ofertas da internet, achadas pra você.</h1>
+      <p class="lede">Uma curadoria de produtos e cursos com o link direto pra oferta — sem enrolação, sem caça ao tesouro.</p>
+    </div>
+    <div class="today-card" id="today-card">
+      <p class="today-label">Achado do dia</p>
+    </div>
+  </div>
+</section>
+
+<section class="categories" id="categorias" aria-label="Categorias">
+  <div class="wrap">
+    <button type="button" class="cat-pill active" data-cat="todos" aria-pressed="true">Todos</button>
+    <button type="button" class="cat-pill" data-cat="mercado-livre" aria-pressed="false">Mercado Livre</button>
+    <button type="button" class="cat-pill" data-cat="cursos" aria-pressed="false">Cursos</button>
+    <button type="button" class="cat-pill" data-cat="beleza" aria-pressed="false">Beleza e barbearia</button>
+    <button type="button" class="cat-pill" data-cat="renda-extra" aria-pressed="false">Renda extra</button>
+    <button type="button" class="cat-pill" data-cat="marketing-ia" aria-pressed="false">Marketing e IA</button>
+    <button type="button" class="cat-pill" data-cat="financas" aria-pressed="false">Finanças</button>
+    <button type="button" class="cat-pill" data-cat="hobbies" aria-pressed="false">Hobbies e estudos</button>
+  </div>
+</section>
+
+<section class="catalog wrap" id="achados">
+  <h2 id="catalog-title">Todos os achados</h2>
+  <p class="sub" id="catalog-sub"></p>
+  <div class="grid">
+    <article class="card" data-cat="beleza" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/aWjfTsRiCIW7wiE/Copia-de-Capa-para-Celular-Area-de-membros-Preto-e-Branco-feedautentico_25909f450e224e8faab5cb087d503a81.png" alt="Capa: Manicura Moderna" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Beleza e barbearia</span></div>
+      <h3>Manicura Moderna</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/sOTZJEf?afid=DRlkwSZy" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="beleza" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/fergAsZOH6fiitg/Foto-300x250_cce1c625ff1740a1b705e2008404de5e.png" alt="Capa: Mangá Lash: técnica japonesa de extensão de cílios" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Beleza e barbearia</span></div>
+      <h3>Mangá Lash: técnica japonesa de extensão de cílios</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/HSFqDSg?afid=klz62CJJ" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="beleza" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/Qbgck6VyVmdTTqF/Foto-300x250_f982962158894da5ad06c6daa31267f6.png" alt="Capa: Arte em Fibra: unhas ultrafinas e resistentes" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Beleza e barbearia</span></div>
+      <h3>Arte em Fibra: unhas ultrafinas e resistentes</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/DCpUUYg?afid=E8Iua163" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="beleza" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/8F38bQPJChzAE1x/foto-de-perfil-1_cb4ab569bfee4912a28730a3d9b8861a.png" alt="Capa: Curso Alongamentos Express Profissional" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Beleza e barbearia</span></div>
+      <h3>Curso Alongamentos Express Profissional</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/yeBk7JR?afid=wFZA2sUG" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="beleza" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/W4eo2d5xljz01Hw/FB-INI-2_7eec280bf0424215876fe89355eabf7f.jpg" alt="Capa: Curso de Barbeiro Online para iniciantes" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Beleza e barbearia</span></div>
+      <h3>Curso de Barbeiro Online para iniciantes</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/BbM8LA4?afid=yyyXB34x" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="renda-extra" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/UNZKTH29LPrG9rO/Copia-de-Capa-do-Infoproduto-Area-de-membros-Azul-e-Preto-feedautentico-1_caeb238a9de6436c8cbca37c058c5d7c.png" alt="Capa: Método Lucrando, do Alex Coelho" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Renda extra</span></div>
+      <h3>Método Lucrando, do Alex Coelho</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/Fs7qKUO?afid=s3nwyWDx" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="renda-extra" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/UNZKTH29LPrG9rO/Copia-de-Capa-do-Infoproduto-Area-de-membros-Azul-e-Preto-feedautentico-2_8ee8ed4d27824e01a91eb36f8cd656de.jpg" alt="Capa: Achadinhos Virais Lucrativos" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Renda extra</span></div>
+      <h3>Achadinhos Virais Lucrativos</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/sRqUB1l?afid=ot1X8ohc" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="renda-extra" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/pbk44x7SNNxBe33/Gemini_Generated_Image_ul29j8ul29j8ul29_8dfb2b3ffd6f4fb997ec639763b8b9fd.jfif" alt="Capa: O Segredo da Renda Extra" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Renda extra</span></div>
+      <h3>O Segredo da Renda Extra</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/O9dZ6nJ?afid=OTmqNNd3" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="renda-extra" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/vgyA06qJDNKPuV5/Capa-2_74a5dfdbf56f418ea34fab670c8c0859.jpg" alt="Capa: Seja seu Chefe" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Renda extra</span></div>
+      <h3>Seja seu Chefe</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/fPgOMty?afid=Cvk21FFK" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="renda-extra" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/f5e1NMAycXSR7zv/419045709_1143130383583154_1495102598290334830_n_ed628fcccc68406bbb6b5337a09eaf6c.jpg" alt="Capa: Monetizar página do Facebook, TikTok e YouTube" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Renda extra</span></div>
+      <h3>Monetizar página do Facebook, TikTok e YouTube</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/tTdpmQ5?afid=Y9AbkUc9" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="renda-extra" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/jnm8WL9m8ijiaQ1/spv_c6e0267827a149de88904390a933b1f7.png" alt="Capa: Sua Primeira Venda 2.0 (SPV)" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Renda extra</span></div>
+      <h3>Sua Primeira Venda 2.0 (SPV)</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/pFhcTot?afid=2gnKdjch" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="renda-extra" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/WQxO1x8VfEMpfJ0/ChatGPT-Image-12-de-mai.-de-2026-06_22_18_4d0dfaf28279488fae7ec87f2d71cb36.png" alt="Capa: Mapa da Prosperidade" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Renda extra</span></div>
+      <h3>Mapa da Prosperidade</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/4PvFO5i?afid=jFjIPQE1" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="renda-extra" data-group="cursos">
+      <div class="thumb"><img src="https://storage.googleapis.com/assets.kiwify.com.br/sUYibAzafQ0fIb1/Capa-Kiwfy-Importador_546b904eb46f444f86685f9c6924a988.png" alt="Capa: Curso Importador Esportivo" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Renda extra</span></div>
+      <h3>Curso Importador Esportivo</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/7hC1c5P?afid=ACFzI48h" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="marketing-ia" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/3qVT3pi1SoVRKWs/capa-do-curso_a840b1b243de40a598c3af590c6dacdd.png" alt="Capa: Edite como YouTubers" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Marketing e IA</span></div>
+      <h3>Edite como YouTubers</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/4d2LpNz?afid=pOrl59KF" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="marketing-ia" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/bSIZRF9aDdixZ9T/FB-2026-09kiwify2_b4cabbe93dc44425b228d10b59e31424.png" alt="Capa: FB Auto Post 2026: automação para Facebook" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Marketing e IA</span></div>
+      <h3>FB Auto Post 2026: automação para Facebook</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/oSg42JQ?afid=mnE33DZ5" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="marketing-ia" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/8KyFNnf7DI2feQn/pwa-512x512_6cf173d7807341d39ca998481638e472.png" alt="Capa: Insta Ninja" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Marketing e IA</span></div>
+      <h3>Insta Ninja</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/oDeJdkb?afid=aM2deAgB" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="marketing-ia" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/p1OFMcYVgYKya0u/DIVULGADDORAA-4_54e85012e7c04741b96f9a55e2c47ce0.png" alt="Capa: IA Divulgadora" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Marketing e IA</span></div>
+      <h3>IA Divulgadora</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/FL9fABB?afid=mzy2XK2P" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="marketing-ia" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/jmxjlDs4OtXQF6n/SEGREDOS-ANUNCIOS-POLITICOS-CAPA-300X250_53b1256828b84cf58f87c60499bf53b1.jpg" alt="Capa: Curso Completo de Tráfego Pago Político" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Marketing e IA</span></div>
+      <h3>Curso Completo de Tráfego Pago Político</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/fUzlOFV?afid=KwuBeYfQ" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="financas" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/u6nyjyY08GTc03q/Gemini_Generated_Image_llj5npllj5npllj5_48cd26e712d444caa1afca823e700da9.jpg" alt="Capa: Relatório Smart 2.0: Top 20 ativos para o bull market" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Finanças</span></div>
+      <h3>Relatório Smart 2.0: Top 20 ativos para o bull market</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/47RcN5k?afid=A2GOhKrO" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="financas" data-group="cursos">
+      <div class="thumb"><img src="https://s3.amazonaws.com/aws-assets.kiwify.com.br/gDlcLu7ddGy0lEV/FAFA3B2B-2006-47E4-809D-4A4617041B3E_e951e80a2f4e4f209056ce8e50132425.jpeg" alt="Capa: Comunidade Milhas 3.0" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Finanças</span></div>
+      <h3>Comunidade Milhas 3.0</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/cvuFJM6?afid=QnBYcbjN" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="hobbies" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/1xh9IENqoOvEpV5/APOSTILAS-DE-ESTETICA-AUTOMOTIVA-4_7be61bd538404dbe9ef4ec5b35183a24.png" alt="Capa: Curso de Micro Pintura + bônus grátis" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Hobbies e estudos</span></div>
+      <h3>Curso de Micro Pintura + bônus grátis</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/UEX852a?afid=27eEtess" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="hobbies" data-group="cursos">
+      <div class="thumb"><img src="https://storage.googleapis.com/assets.kiwify.com.br/vk4zj3liKtLb9AA/pokemon-amigurumi_545d1ead76344ebb92c763eb1fb70a23.jpg" alt="Capa: Amigurumi Criativo: pacote premium de receitas" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Hobbies e estudos</span></div>
+      <h3>Amigurumi Criativo: pacote premium de receitas</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/9qlbj0v?afid=nau5x7M8" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="hobbies" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/cD2nWZNDBwP3V6U/WhatsApp-Image-2026-07-04-at-11.55.01-PM_372801b5743c434f930effd278acf96b.jpeg" alt="Capa: Como jogar bem com Italo eFootball e vencer mais fácil" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Hobbies e estudos</span></div>
+      <h3>Como jogar bem com Italo eFootball e vencer mais fácil</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/yAdCPJy?afid=Kw7fezDL" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="hobbies" data-group="cursos">
+      <div class="thumb"><img src="https://s3.amazonaws.com/aws-assets.kiwify.com.br/Y0ZesDSjKNhImSg/Logo-SENAI-para-Desesperados_44cd4f7a71554e17b2622a9c340b3ea0.png" alt="Capa: Plano de Estudos SENAI para Desesperados" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Hobbies e estudos</span></div>
+      <h3>Plano de Estudos SENAI para Desesperados</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/1GO5koz?afid=Dv59t6yD" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="hobbies" data-group="cursos">
+      <div class="thumb"><img src="https://s3.amazonaws.com/aws-assets.kiwify.com.br/ddPvDp9u1PCm89q/Manimarts-desenho_21e15c8b299c4b7e8c338f380acb1e89.png" alt="Capa: Manimarts" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Hobbies e estudos</span></div>
+      <h3>Manimarts</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/3r98LiH?afid=P2wRWwcP" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="hobbies" data-group="cursos">
+      <div class="thumb"><img src="https://aws-assets.kiwify.com.br/db7AK7aFAVvVolX/comite_recepcao_capa_conversao_e711f50d95e945c59d2959d866adf910.png" alt="Capa: Comitê de Recepção" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="tag">Hobbies e estudos</span></div>
+      <h3>Comitê de Recepção</h3>
+      <a class="cta" href="https://pay.kiwify.com.br/vgA6iZB?afid=FBX7UpW3" target="_blank" rel="sponsored noopener noreferrer">Ver curso</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="mercado-livre" data-group="mercado-livre">
+      <div class="thumb"><span class="tag">Mercado Livre</span></div>
+      <h3>Achado do Mercado Livre nº 1</h3>
+      <a class="cta" href="https://meli.la/2qVP6W4" target="_blank" rel="sponsored noopener noreferrer">Ver oferta</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="mercado-livre" data-group="mercado-livre">
+      <div class="thumb"><span class="tag">Mercado Livre</span></div>
+      <h3>Achado do Mercado Livre nº 2</h3>
+      <a class="cta" href="https://meli.la/1HVEWGY" target="_blank" rel="sponsored noopener noreferrer">Ver oferta</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="mercado-livre" data-group="mercado-livre">
+      <div class="thumb"><span class="tag">Mercado Livre</span></div>
+      <h3>Achado do Mercado Livre nº 3</h3>
+      <a class="cta" href="https://meli.la/2So7EJ7" target="_blank" rel="sponsored noopener noreferrer">Ver oferta</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="mercado-livre" data-group="mercado-livre">
+      <div class="thumb"><span class="tag">Mercado Livre</span></div>
+      <h3>Achado do Mercado Livre nº 4</h3>
+      <a class="cta" href="https://meli.la/19h6NdA" target="_blank" rel="sponsored noopener noreferrer">Ver oferta</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="mercado-livre" data-group="mercado-livre">
+      <div class="thumb"><span class="tag">Mercado Livre</span></div>
+      <h3>Achado do Mercado Livre nº 5</h3>
+      <a class="cta" href="https://meli.la/1EFuYKd" target="_blank" rel="sponsored noopener noreferrer">Ver oferta</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="mercado-livre" data-group="mercado-livre">
+      <div class="thumb"><span class="tag">Mercado Livre</span></div>
+      <h3>Achado do Mercado Livre nº 6</h3>
+      <a class="cta" href="https://meli.la/32BNb7n" target="_blank" rel="sponsored noopener noreferrer">Ver oferta</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="mercado-livre" data-group="mercado-livre">
+      <div class="thumb"><span class="tag">Mercado Livre</span></div>
+      <h3>Achado do Mercado Livre nº 7</h3>
+      <a class="cta" href="https://meli.la/1s6A8jh" target="_blank" rel="sponsored noopener noreferrer">Ver oferta</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="mercado-livre" data-group="mercado-livre">
+      <div class="thumb"><span class="tag">Mercado Livre</span></div>
+      <h3>Achado do Mercado Livre nº 8</h3>
+      <a class="cta" href="https://meli.la/1XWtrCo" target="_blank" rel="sponsored noopener noreferrer">Ver oferta</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="mercado-livre" data-group="mercado-livre">
+      <div class="thumb"><span class="tag">Mercado Livre</span></div>
+      <h3>Achado do Mercado Livre nº 9</h3>
+      <a class="cta" href="https://meli.la/1HBJTbo" target="_blank" rel="sponsored noopener noreferrer">Ver oferta</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="mercado-livre" data-group="mercado-livre">
+      <div class="thumb"><span class="tag">Mercado Livre</span></div>
+      <h3>Achado do Mercado Livre nº 10</h3>
+      <a class="cta" href="https://meli.la/2TQC5Qb" target="_blank" rel="sponsored noopener noreferrer">Ver oferta</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+    <article class="card" data-cat="mercado-livre" data-group="mercado-livre">
+      <div class="thumb"><span class="tag">Mercado Livre</span></div>
+      <h3>Achado do Mercado Livre nº 11</h3>
+      <a class="cta" href="https://meli.la/2FfaFgq" target="_blank" rel="sponsored noopener noreferrer">Ver oferta</a>
+      <span class="affiliate-note">Link de afiliado</span>
+    </article>
+  </div>
+</section>
+
+<section class="subscribe" id="assinar">
+  <div class="wrap subscribe-inner">
+    <div>
+      <h2>Não perca nenhum achado</h2>
+      <p>Receba as melhores ofertas direto no seu e-mail.</p>
+    </div>
+    <form id="subscribe-form">
+      <input type="email" name="email" placeholder="seu@email.com" aria-label="Seu e-mail" required>
+      <button type="submit">Quero receber</button>
+    </form>
+    <p id="subscribe-msg" role="status"></p>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>Alpha Achados — este site contém links de afiliado: se você comprar por eles, podemos receber uma comissão, sem custo extra para você.</span>
+  <span>© 2026</span>
+</footer>
+
+<script>
+(function(){
+  // ====== CONFIGURAÇÃO ======
+  // Cole aqui o link do seu formulário (ex.: https://formspree.io/f/xxxxxxx) para o e-mail funcionar de verdade.
+  var FORM_URL = '';
+
+  var INFO = {"todos": ["Todos os achados", "Ofertas do Mercado Livre e cursos online, com link direto para a compra."], "mercado-livre": ["Achados do Mercado Livre", "Produtos selecionados. Preço e estoque são os da página da loja."], "cursos": ["Cursos online", "Todos os cursos, de todos os assuntos."], "beleza": ["Beleza e barbearia", "Unhas, cílios e barbearia: cursos para aprender uma profissão ou turbinar os atendimentos."], "renda-extra": ["Renda extra", "Cursos para começar a vender, empreender e montar uma renda extra pela internet."], "marketing-ia": ["Marketing e IA", "Vídeo, redes sociais, automação e IA para divulgar melhor."], "financas": ["Finanças", "Investimentos e milhas em conteúdos digitais."], "hobbies": ["Hobbies e estudos", "Artesanato, games, estudos e outros cursos que valem a olhada."]};
+  var pills = document.querySelectorAll('.cat-pill');
+  var cards = document.querySelectorAll('.card');
+  var titleEl = document.getElementById('catalog-title');
+  var subEl = document.getElementById('catalog-sub');
+
+  function goTo(cat, skipScroll){
+    if(!INFO[cat]) cat = 'todos';
+    pills.forEach(function(p){
+      var on = p.dataset.cat === cat;
+      p.classList.toggle('active', on);
+      p.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    var n = 0;
+    cards.forEach(function(c){
+      var ok = cat === 'todos' || (cat === 'cursos' ? c.dataset.group === 'cursos' : c.dataset.cat === cat);
+      c.classList.toggle('hidden-by-filter', !ok);
+      if(ok) n++;
+    });
+    titleEl.textContent = INFO[cat][0];
+    subEl.textContent = n + (n === 1 ? ' item. ' : ' itens. ') + INFO[cat][1];
+    document.title = cat === 'todos' ? 'Alpha Achados — as melhores ofertas, achadas pra você' : INFO[cat][0] + ' — Alpha Achados';
+    history.replaceState(null, '', cat === 'todos' ? '#/' : '#/' + cat);
+    if(!skipScroll){ document.getElementById('achados').scrollIntoView({behavior:'smooth'}); }
+  }
+  pills.forEach(function(p){ p.addEventListener('click', function(){ goTo(p.dataset.cat); }); });
+
+  var h = location.hash.replace('#/','').replace('/','');
+  goTo(h || 'todos', true);
+
+  // Achado do dia: troca sozinho a cada dia, entre os cursos com foto
+  (function(){
+    var pool = Array.prototype.filter.call(cards, function(c){ return c.dataset.group === 'cursos' && c.querySelector('img'); });
+    if(!pool.length) return;
+    var pick = pool[Math.floor(Date.now() / 86400000) % pool.length];
+    var box = document.getElementById('today-card');
+    var img = pick.querySelector('img').cloneNode(true);
+    var thumb = document.createElement('div'); thumb.className = 'thumb'; thumb.appendChild(img);
+    var title = document.createElement('h3'); title.textContent = pick.querySelector('h3').textContent;
+    var a = pick.querySelector('a.cta').cloneNode(true); a.textContent = 'Ver curso';
+    box.appendChild(thumb); box.appendChild(title); box.appendChild(a);
+  })();
+
+  // Menu e logo: rolam a página (não navegam), assim o clique nunca sai do site
+  document.getElementById('logo-btn').addEventListener('click', function(){ goTo('todos', true); window.scrollTo({top:0, behavior:'smooth'}); });
+  document.querySelectorAll('.nav-link').forEach(function(b){
+    b.addEventListener('click', function(){
+      var t = document.getElementById(b.dataset.target);
+      if(t) t.scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  // E-mail
+  var form = document.getElementById('subscribe-form');
+  var msg = document.getElementById('subscribe-msg');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = form.querySelector('button');
+    function say(t){ msg.textContent = t; msg.style.display = 'block'; }
+    if(!FORM_URL){ say('Inscrições em breve. Volte daqui a pouco!'); return; }
+    btn.disabled = true; btn.textContent = 'Enviando...';
+    fetch(FORM_URL, { method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form) })
+      .then(function(r){
+        if(r.ok){ say('Inscrito com sucesso! Você vai receber as melhores ofertas por e-mail.'); form.reset(); }
+        else { say('Algo deu errado. Tenta de novo em instantes.'); }
+      })
+      .catch(function(){ say('Não conseguimos conectar agora. Tenta de novo em instantes.'); })
+      .then(function(){ btn.disabled = false; btn.textContent = 'Quero receber'; });
+  });
+})();
+</script>
+</body>
+</html>
