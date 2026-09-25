@@ -107,6 +107,111 @@ footer{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px 24p
   .subscribe input{ flex:1; min-width:0; }
 }
 
+
+/* ===== ALPHA ACHADOS 2.0 ===== */
+.plans{
+  padding:72px 20px;
+  max-width:1100px;
+  margin:0 auto;
+}
+.section-head{text-align:center;max-width:720px;margin:0 auto 36px}
+.eyebrow{
+  display:inline-block;
+  font-size:.76rem;
+  font-weight:800;
+  letter-spacing:.16em;
+  opacity:.72;
+  margin-bottom:10px;
+}
+.section-head h2,.vip-preview h2{margin:0 0 10px;font-size:clamp(1.8rem,4vw,2.8rem)}
+.section-head p{margin:0;opacity:.72}
+.plans-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+  max-width:850px;
+  margin:auto;
+}
+.plan-card{
+  position:relative;
+  border:1px solid rgba(127,127,127,.22);
+  border-radius:24px;
+  padding:30px;
+  background:rgba(255,255,255,.035);
+  box-shadow:0 18px 50px rgba(0,0,0,.08);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.plan-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,.13)}
+.plan-card.featured{border:1.5px solid #111;box-shadow:0 20px 65px rgba(0,0,0,.13)}
+.plan-card.featured .plan-badge{background:#111;color:#fff}
+.featured-label{
+  position:absolute;right:18px;top:18px;
+  background:#111;color:#fff;border-radius:999px;
+  padding:6px 10px;font-size:.68rem;font-weight:800;
+}
+.plan-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.plan-badge{
+  display:inline-flex;padding:7px 11px;border-radius:999px;
+  background:rgba(127,127,127,.12);font-size:.72rem;font-weight:900;letter-spacing:.08em;
+}
+.plan-icon{font-size:1.55rem}
+.plan-card h3{font-size:1.55rem;margin:0 0 7px}
+.plan-price{font-size:1.55rem;font-weight:900;margin:0 0 22px}
+.plan-price small{font-size:.78rem;font-weight:600;opacity:.55}
+.plan-card ul{list-style:none;padding:0;margin:0 0 25px;display:grid;gap:11px}
+.plan-card li{font-size:.95rem}
+.plan-btn,.vip-preview-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:100%;min-height:46px;border-radius:13px;text-decoration:none;
+  font-weight:800;transition:transform .15s ease,opacity .15s ease;
+}
+.plan-btn:hover,.vip-preview-btn:hover{transform:translateY(-1px);opacity:.88}
+.plan-btn.primary{background:#111;color:#fff}
+.plan-btn.secondary{border:1px solid rgba(127,127,127,.3);color:inherit}
+.vip-preview{
+  max-width:1050px;margin:0 auto 72px;
+  border-radius:28px;padding:38px;
+  display:flex;align-items:center;justify-content:space-between;gap:28px;
+  background:linear-gradient(135deg,rgba(127,127,127,.12),rgba(127,127,127,.035));
+  border:1px solid rgba(127,127,127,.2);
+}
+.vip-preview p{max-width:680px;margin:0;opacity:.72;line-height:1.65}
+.vip-preview-btn{width:auto;padding:0 22px;background:#111;color:#fff;white-space:nowrap}
+@media(max-width:760px){
+  .plans-grid{grid-template-columns:1fr}
+  .vip-preview{margin:0 18px 55px;padding:28px;display:block}
+  .vip-preview-btn{margin-top:22px;width:100%}
+  .featured-label{position:static;display:inline-block;margin-bottom:14px}
+}
+
+
+.member-access{
+  max-width:1050px;margin:0 auto 34px;padding:28px 34px;
+  border-radius:22px;border:1px solid rgba(127,127,127,.2);
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  background:rgba(127,127,127,.045);
+}
+.member-access h2{margin:0 0 7px;font-size:1.55rem}
+.member-access p{margin:0;opacity:.68}
+.member-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:46px;padding:0 20px;border-radius:13px;
+  background:#111;color:#fff;text-decoration:none;font-weight:800;white-space:nowrap;
+}
+@media(max-width:760px){
+  .member-access{margin:0 18px 28px;padding:24px;display:block}
+  .member-btn{width:100%;margin-top:18px}
+}
+
+
+.free-strip{
+  max-width:1050px;margin:25px auto 0;padding:13px 18px;
+  border-radius:14px;background:rgba(127,127,127,.07);
+  border:1px solid rgba(127,127,127,.16);
+  display:flex;justify-content:center;gap:9px;flex-wrap:wrap;
+  font-size:.9rem;opacity:.85;
+}
+
 </style>
 </head>
 <body>
@@ -376,19 +481,83 @@ footer{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px 24p
   </div>
 </section>
 
-<section class="subscribe" id="assinar">
-  <div class="wrap subscribe-inner">
-    <div>
-      <h2>Não perca nenhum achado</h2>
-      <p>Receba as melhores ofertas direto no seu e-mail.</p>
-    </div>
-    <form id="subscribe-form">
-      <input type="email" name="email" placeholder="seu@email.com" aria-label="Seu e-mail" required>
-      <button type="submit">Quero receber</button>
-    </form>
-    <p id="subscribe-msg" role="status"></p>
+
+
+
+<section class="free-strip" id="site-free">
+  <span>🟢 <strong>Alpha Achados é gratuito</strong></span>
+  <span>•</span>
+  <span>Veja os achados publicados no site sem pagar.</span>
+</section>
+
+<section class="plans" id="planos">
+  <div class="section-head">
+    <span class="eyebrow">ALPHA CLUB</span>
+    <h2>Escolha seu grupo VIP</h2>
+    <p>O Alpha Achados continua gratuito no site. No VIP, você recebe acesso aos grupos exclusivos.</p>
+  </div>
+
+  <div class="plans-grid">
+    <article class="plan-card">
+      <div class="plan-top">
+        <span class="plan-badge">VIP MENSAL</span>
+        <span class="plan-icon">💎</span>
+      </div>
+      <h3>Alpha VIP Mensal</h3>
+      <p class="plan-price">R$ 9,90 <small>/ mês</small></p>
+      <ul>
+        <li>✓ Entrada no grupo VIP mensal</li>
+        <li>✓ Achados exclusivos do grupo</li>
+        <li>✓ Ofertas selecionadas</li>
+        <li>✓ Conteúdos e oportunidades compartilhados no grupo</li>
+        <li>✓ Renovação mensal</li>
+      </ul>
+      <a class="plan-btn primary" href="#" id="vip-monthly-btn">Entrar no VIP Mensal</a>
+    </article>
+
+    <article class="plan-card featured">
+      <div class="featured-label">MAIOR ECONOMIA</div>
+      <div class="plan-top">
+        <span class="plan-badge">VIP ANUAL</span>
+        <span class="plan-icon">👑</span>
+      </div>
+      <h3>Alpha VIP Anual</h3>
+      <p class="plan-price">R$ 79,90 <small>/ ano</small></p>
+      <ul>
+        <li>✓ Entrada no grupo VIP anual</li>
+        <li>✓ Achados exclusivos do grupo</li>
+        <li>✓ Ofertas selecionadas</li>
+        <li>✓ Conteúdos e oportunidades compartilhados no grupo</li>
+        <li>✓ Acesso durante 12 meses</li>
+      </ul>
+      <a class="plan-btn primary" href="#" id="vip-annual-btn">Entrar no VIP Anual</a>
+    </article>
   </div>
 </section>
+
+
+
+<section class="member-access" id="area-assinante">
+  <div>
+    <span class="eyebrow">JÁ É VIP?</span>
+    <h2>Acesse seu grupo exclusivo</h2>
+    <p>Depois da compra, você receberá as instruções para entrar no grupo correspondente à sua assinatura.</p>
+  </div>
+  <a class="member-btn" id="member-area-btn" href="#">Acessar meu grupo →</a>
+</section>
+
+<section class="vip-preview" id="vip">
+  <div>
+    <span class="eyebrow">ÁREA VIP</span>
+    <h2>Os melhores achados, direto no seu grupo.</h2>
+    <p>
+      Tenha acesso aos conteúdos exclusivos do Alpha VIP por meio do plano mensal ou anual.
+    </p>
+  </div>
+  <a href="#vip" class="vip-preview-btn">Conhecer os grupos VIP →</a>
+</section>
+
+
 
 <footer class="wrap">
   <span>Alpha Achados — este site contém links de afiliado: se você comprar por eles, podemos receber uma comissão, sem custo extra para você.</span>
@@ -398,8 +567,13 @@ footer{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px 24p
 <script>
 (function(){
   // ====== CONFIGURAÇÃO ======
-  // Cole aqui o link do seu formulário (ex.: https://formspree.io/f/xxxxxxx) para o e-mail funcionar de verdade.
-  var FORM_URL = '';
+// ====== KIWIFY / ALPHA VIP ======
+// Depois de criar os planos na Kiwify, cole aqui os respectivos links de checkout.
+var VIP_MONTHLY_URL = 'https://mpago.la/1Jx4XkM';
+var VIP_ANNUAL_URL = 'https://mpago.la/11HJC8H';
+var MEMBER_AREA_URL = '';
+var MONTHLY_GROUP_URL = '';
+var ANNUAL_GROUP_URL = '';
 
   var INFO = {"todos": ["Todos os achados", "Ofertas do Mercado Livre e cursos online, com link direto para a compra."], "mercado-livre": ["Achados do Mercado Livre", "Produtos selecionados. Preço e estoque são os da página da loja."], "cursos": ["Cursos online", "Todos os cursos, de todos os assuntos."], "beleza": ["Beleza e barbearia", "Unhas, cílios e barbearia: cursos para aprender uma profissão ou turbinar os atendimentos."], "renda-extra": ["Renda extra", "Cursos para começar a vender, empreender e montar uma renda extra pela internet."], "marketing-ia": ["Marketing e IA", "Vídeo, redes sociais, automação e IA para divulgar melhor."], "financas": ["Finanças", "Investimentos e milhas em conteúdos digitais."], "hobbies": ["Hobbies e estudos", "Artesanato, games, estudos e outros cursos que valem a olhada."]};
   var pills = document.querySelectorAll('.cat-pill');
@@ -453,24 +627,51 @@ footer{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px 24p
     });
   });
 
-  // E-mail
-  var form = document.getElementById('subscribe-form');
-  var msg = document.getElementById('subscribe-msg');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var btn = form.querySelector('button');
-    function say(t){ msg.textContent = t; msg.style.display = 'block'; }
-    if(!FORM_URL){ say('Inscrições em breve. Volte daqui a pouco!'); return; }
-    btn.disabled = true; btn.textContent = 'Enviando...';
-    fetch(FORM_URL, { method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form) })
-      .then(function(r){
-        if(r.ok){ say('Inscrito com sucesso! Você vai receber as melhores ofertas por e-mail.'); form.reset(); }
-        else { say('Algo deu errado. Tenta de novo em instantes.'); }
-      })
-      .catch(function(){ say('Não conseguimos conectar agora. Tenta de novo em instantes.'); })
-      .then(function(){ btn.disabled = false; btn.textContent = 'Quero receber'; });
-  });
 })();
+
+// ====== ALPHA VIP LINKS ======
+function openConfiguredLink(url, fallbackMessage) {
+  if (url) {
+    window.location.href = url;
+  } else {
+    alert(fallbackMessage);
+  }
+}
+
+var monthlyBtn = document.getElementById('vip-monthly-btn');
+if (monthlyBtn) {
+  monthlyBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    openConfiguredLink(
+      VIP_MONTHLY_URL,
+      'O checkout VIP mensal ainda não foi configurado. Crie o plano na Kiwify e cole o link em VIP_MONTHLY_URL no index.html.'
+    );
+  });
+}
+
+var annualBtn = document.getElementById('vip-annual-btn');
+if (annualBtn) {
+  annualBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    openConfiguredLink(
+      VIP_ANNUAL_URL,
+      'O checkout VIP anual ainda não foi configurado. Crie o plano na Kiwify e cole o link em VIP_ANNUAL_URL no index.html.'
+    );
+  });
+}
+
+var memberBtn = document.getElementById('member-area-btn');
+if (memberBtn) {
+  memberBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    openConfiguredLink(
+      MEMBER_AREA_URL || MONTHLY_GROUP_URL || ANNUAL_GROUP_URL,
+      'O link do grupo VIP ainda não foi configurado. Depois da compra, use o link de convite do grupo correspondente à sua assinatura.'
+    );
+  });
+}
+
 </script>
 </body>
 </html>
+
