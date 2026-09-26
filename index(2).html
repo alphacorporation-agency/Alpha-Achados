@@ -636,48 +636,7 @@ var ANNUAL_GROUP_URL = 'https://chat.whatsapp.com/Hc0vaGpio9wILFq4bPfAz';
 
 })();
 
-// ====== ALPHA VIP LINKS ======
-function openConfiguredLink(url, fallbackMessage) {
-  if (url) {
-    window.location.href = url;
-  } else {
-    alert(fallbackMessage);
-  }
-}
-
-var monthlyBtn = document.getElementById('vip-monthly-btn');
-if (monthlyBtn) {
-  monthlyBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    openConfiguredLink(
-      VIP_MONTHLY_URL,
-      'O checkout VIP mensal ainda não foi configurado. Crie o plano na Kiwify e cole o link em VIP_MONTHLY_URL no index.html.'
-    );
-  });
-}
-
-var annualBtn = document.getElementById('vip-annual-btn');
-if (annualBtn) {
-  annualBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    openConfiguredLink(
-      VIP_ANNUAL_URL,
-      'O checkout VIP anual ainda não foi configurado. Crie o plano na Kiwify e cole o link em VIP_ANNUAL_URL no index.html.'
-    );
-  });
-}
-
-var memberBtn = document.getElementById('member-area-btn');
-if (memberBtn) {
-  memberBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    openConfiguredLink(
-      MEMBER_AREA_URL || MONTHLY_GROUP_URL || ANNUAL_GROUP_URL,
-      'O link do grupo VIP ainda não foi configurado. Depois da compra, use o link de convite do grupo correspondente à sua assinatura.'
-    );
-  });
-}
-
+// Links VIP são definidos diretamente nos href dos botões HTML.
 </script>
 </body>
 </html>
